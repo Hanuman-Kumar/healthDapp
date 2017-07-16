@@ -1,0 +1,24 @@
+pragma solidity ^0.4.0;
+contract PatientData{
+ struct PatientRecord{
+   string timestamp;
+   uint patient_id;
+   string data;
+   
+   }
+   mapping (uint =>PatientRecord) records;
+   uint public numRecords=0;
+   string patient_name;
+   function storeData(string data,string time,uint patientId){
+   records[numRecords].data=data;
+   records[numRecords].timestamp=time;
+   records[numRecords].patient_id=patientId;
+   numRecords++;
+   }
+   
+   function accessData(uint index) constant returns (string data,string timestamp,uint patientId){
+   data=records[index].data;
+   timestamp=records[index].timestamp;
+   patientId=records[index].patient_id;
+   }
+   }
